@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Add new Mediumish Blog Post  {% endblock title %}
+    
+
+{% block content %}
+
+<div class="container">
+
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="title" class="form-control" value="{{post.post_title}}" placeholder="Post Title"><br>
+        <input type="text" name="author" class="form-control" value="{{post.author}}" placeholder="Author"> <br>
+        <textarea name="content" class="form-control" cols="30" rows="10">{{post.post_body}}</textarea> <br>
+        <input type="text" name="category" class="form-control" value="{{post.category}}" placeholder="Post Category"> <br>
+
+        <div class="form-control">
+            <input type="file" name="image" value="{{post.cover}}"> 
+        
+        {% if post.cover %}
+            <a href="/{{post.cover}}" target="_blank">Current image: {{post.cover}}</a>
+        {% endif %}
+        </div>
+        <br>
+     
+        <input type="submit" class="btn btn-success" value="Post">
+
+    </form>
+
+</div>
+
+
+{% endblock content %}
+
