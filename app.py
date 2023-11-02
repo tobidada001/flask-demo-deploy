@@ -5,11 +5,18 @@ from werkzeug.utils import secure_filename
 from models import db
 from models import *
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 user = 'root'
 password = ''
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlitedb.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{password}@localhost/flaskblogdb'
+# app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{password}@localhost/flaskblogdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MEDIUM_DATABASE_URI')
+# app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{user}:{password}@localhost/flaskblogdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD'] = os.path.join('static', 'uploads')
 
